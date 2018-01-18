@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from '@/pages/HelloWorld'
 import Home from '@/pages/Home'
 import Cart from '@/pages/Cart'
 import Index from '@/pages/admin/Index'
 import New from '@/pages/admin/New'
 import Products from '@/pages/admin/Products'
 import Edit from '@/pages/admin/Edit'
+import Details from '@/pages/Details'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/details/:id',
+      name: 'Details',
+      component: Details
     },
     {
       path: '/admin',

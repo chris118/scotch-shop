@@ -35,7 +35,7 @@
           name="manufacturer"
           :class="{'form-control': true, 'error': errors.has('manufacturer') }">
           <template v-for="manufacturer in manufacturers">
-            <option :value="manufacturer._id" :selected="manufacturer._id == (model.manufacturer && model.manufacturer._id)">{{manufacturer.name}}</option>
+            <option :value="manufacturer" :selected="manufacturer._id == (model.manufacturer && model.manufacturer._id)">{{manufacturer.name}}</option>
           </template>
         </select>
         <span class="small text-danger" v-show="errors.has('manufacturer')">Manufacturer is required</span>
@@ -47,7 +47,7 @@
         <label>Image</label>
         <input
           type="text"
-          class="form-control"
+          lass="form-control"
           placeholder="Image"
           v-model="model.image"
           v-validate="'required|url'"
@@ -80,17 +80,25 @@
 </template>
 
 <script>
+  import {
+    ERROR_MSG
+  } from '../../store/mutation-types'
   export default {
-    data () {
-      return {
-        model: {},
-        manufacturers: [],
-        isEditing: false
-      }
+    props: ['model', 'manufacturers', 'isEditing'],
+    created () {
+
     },
     methods: {
       saveProduct () {
-        console.log(this.errors)
+        this.$validator.validateAll().then(() => {
+          this.$emit('save-product', this.model)
+        }).catch(() => {
+          this.$store.commit(ERROR_MSG, {
+            type: 'error',
+            title: 'Validation!',
+            content: 'Please ensure the form is valid.'
+          })
+        })
       }
     }
   }

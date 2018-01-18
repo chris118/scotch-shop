@@ -7,6 +7,7 @@ import VeeValidate from 'vee-validate'
 import $ from 'jquery'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -16,6 +17,7 @@ Vue.use(VeeValidate)
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
