@@ -5,7 +5,7 @@
       <tr>
         <th>Name</th>
         <th>Price</th>
-        <th>Manufacturer</th>
+        <!--<th>Manufacturer</th>-->
         <th></th>
         <th></th>
       </tr>

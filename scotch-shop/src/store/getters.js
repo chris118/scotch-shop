@@ -3,6 +3,7 @@ export const productGetters = {
   // allId: state => state.products.result,
   // entities: state => state.products.entities,
   allProducts: (state, getters) => {
+    console.log('scotch-shop', state.products)
     return state.products
     // const result = getters.allId
     // const entities = getters.entities

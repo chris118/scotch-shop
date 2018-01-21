@@ -28,7 +28,21 @@
     },
     computed: {
       manufacturers () {
-        return this.$store.getters.allManufacturers
+        const manufacturers = [
+          {
+            _id: 1,
+            name: 'Apple'
+          },
+          {
+            _id: 2,
+            name: 'Sony'
+          },
+          {
+            _id: 3,
+            name: 'Samsung'
+          }
+        ]
+        return manufacturers
       },
       model () {
         const productById = this.$store.getters.productById(this.$route.params['id'])
